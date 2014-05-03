@@ -107,6 +107,13 @@ class Order implements EntityInterface
     private $city;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", nullable=false)
+     */
+    private $comment;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_timestamp", type="datetime", nullable=false)
@@ -416,5 +423,28 @@ class Order implements EntityInterface
     public function getInstall()
     {
         return $this->install;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Order
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
