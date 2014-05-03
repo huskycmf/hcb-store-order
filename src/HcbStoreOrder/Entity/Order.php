@@ -36,6 +36,13 @@ class Order implements EntityInterface
     private $status = 1;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="install", type="boolean", nullable=false)
+     */
+    private $install = false;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="payment_method", type="integer", nullable=false)
@@ -46,7 +53,7 @@ class Order implements EntityInterface
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="HcbStoreProduct\Entity\Product", cascade={"persist"})
-     * @ORM\JoinTable(name="store_order",
+     * @ORM\JoinTable(name="store_order_has_product",
      *   joinColumns={
      *     @ORM\JoinColumn(name="store_order_id", referencedColumnName="id")
      *   },
@@ -55,7 +62,7 @@ class Order implements EntityInterface
      *   }
      * )
      */
-    private $product;
+    protected $product;
 
     /**
      * @var string
@@ -105,6 +112,8 @@ class Order implements EntityInterface
      * @ORM\Column(name="created_timestamp", type="datetime", nullable=false)
      */
     private $createdTimestamp;
+
+
     /**
      * Constructor
      */
@@ -139,7 +148,7 @@ class Order implements EntityInterface
     /**
      * Get total
      *
-     * @return \double 
+     * @return float 
      */
     public function getTotal()
     {
@@ -384,5 +393,28 @@ class Order implements EntityInterface
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set install
+     *
+     * @param boolean $install
+     * @return Order
+     */
+    public function setInstall($install)
+    {
+        $this->install = $install;
+
+        return $this;
+    }
+
+    /**
+     * Get install
+     *
+     * @return boolean 
+     */
+    public function getInstall()
+    {
+        return $this->install;
     }
 }
