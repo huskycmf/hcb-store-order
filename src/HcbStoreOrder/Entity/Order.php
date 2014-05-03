@@ -22,9 +22,9 @@ class Order implements EntityInterface
     private $id;
 
     /**
-     * @var boolean
+     * @var float
      *
-     * @ORM\Column(name="total", type="double", nullable=false)
+     * @ORM\Column(name="total", type="float", nullable=false)
      */
     private $total = 0;
 
@@ -126,10 +126,10 @@ class Order implements EntityInterface
     /**
      * Set total
      *
-     * @param \double $total
+     * @param float $total
      * @return Order
      */
-    public function setTotal(\double $total)
+    public function setTotal($total)
     {
         $this->total = $total;
 
