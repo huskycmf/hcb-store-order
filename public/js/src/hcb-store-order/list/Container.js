@@ -18,7 +18,7 @@ define([
         //      displaying list of clients.
         templateString: template,
 
-        baseClass: 'storeProductList',
+        baseClass: 'storeOrderList',
         
         postCreate: function () {
             try {

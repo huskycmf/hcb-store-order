@@ -2,7 +2,7 @@
 return array(
     'type' => 'literal',
     'options' => array(
-        'route' => '/category'
+        'route' => '/order'
     ),
     'may_terminate' => false,
     'child_routes' => array(
@@ -14,52 +14,7 @@ return array(
             ),
             'may_terminate' => false,
             'child_routes' => array(
-                'locale' => array(
-                    'type' => 'literal',
-                    'options' => array(
-                        'route' => '/localized'
-                    ),
-                    'may_terminate' => false,
-                    'child_routes' => array(
-                        'list' => array(
-                            'type' => 'method',
-                            'options' => array(
-                                'verb' => 'get',
-                                'defaults' => array(
-                                    'controller' => 'HcbStoreOrder-Controller-Localized-Collection-List'
-                                )
-                            )
-                        ),
-                        'create' => array(
-                            'type' => 'method',
-                            'options' => array(
-                                'verb' => 'post',
-                                'defaults' => array(
-                                    'controller' => 'HcbStoreOrder-Controller-Localized-Create'
-                                )
-                            )
-                        ),
-                        'resource' => array(
-                            'type' => 'segment',
-                            'options' => array(
-                                'route' => '/:id',
-                                'constraints' => array( 'id' => '[0-9]+' )
-                            ),
-                            'may_terminate' => false,
-                            'child_routes' => array(
-                                'update' => array(
-                                    'type' => 'method',
-                                    'options' => array(
-                                        'verb' => 'put',
-                                        'defaults' => array(
-                                            'controller' => 'HcbStoreOrder-Controller-Localized-Update'
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
+
             )
         ),
         'delete' => array(
@@ -95,15 +50,6 @@ return array(
                             'controller' => 'HcbStoreOrder-Controller-Collection-List'
                         )
                     )
-                )
-            )
-        ),
-        'create' => array(
-            'type' => 'method',
-            'options' => array(
-                'verb' => 'post',
-                'defaults' => array(
-                    'controller' => 'HcbStoreOrder-Controller-Create'
                 )
             )
         )

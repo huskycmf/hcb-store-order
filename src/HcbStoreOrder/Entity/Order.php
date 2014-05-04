@@ -50,17 +50,9 @@ class Order implements EntityInterface
     private $paymentMethod = 1;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \HcbStoreOrder\Entity\Order\Product
      *
-     * @ORM\ManyToMany(targetEntity="HcbStoreProduct\Entity\Product", cascade={"persist"})
-     * @ORM\JoinTable(name="store_order_has_product",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="store_order_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="store_product_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="HcbStoreOrder\Entity\Order\Product", mappedBy="order", cascade={"persist"})
      */
     protected $product;
 
@@ -119,8 +111,6 @@ class Order implements EntityInterface
      * @ORM\Column(name="created_timestamp", type="datetime", nullable=false)
      */
     private $createdTimestamp;
-
-
     /**
      * Constructor
      */
@@ -183,6 +173,29 @@ class Order implements EntityInterface
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set install
+     *
+     * @param boolean $install
+     * @return Order
+     */
+    public function setInstall($install)
+    {
+        $this->install = $install;
+
+        return $this;
+    }
+
+    /**
+     * Get install
+     *
+     * @return boolean 
+     */
+    public function getInstall()
+    {
+        return $this->install;
     }
 
     /**
@@ -347,6 +360,29 @@ class Order implements EntityInterface
     }
 
     /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Order
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
      * Set createdTimestamp
      *
      * @param \DateTime $createdTimestamp
@@ -372,10 +408,10 @@ class Order implements EntityInterface
     /**
      * Add product
      *
-     * @param \HcbStoreProduct\Entity\Product $product
+     * @param \HcbStoreOrder\Entity\Order\Product $product
      * @return Order
      */
-    public function addProduct(\HcbStoreProduct\Entity\Product $product)
+    public function addProduct(\HcbStoreOrder\Entity\Order\Product $product)
     {
         $this->product[] = $product;
 
@@ -385,9 +421,9 @@ class Order implements EntityInterface
     /**
      * Remove product
      *
-     * @param \HcbStoreProduct\Entity\Product $product
+     * @param \HcbStoreOrder\Entity\Order\Product $product
      */
-    public function removeProduct(\HcbStoreProduct\Entity\Product $product)
+    public function removeProduct(\HcbStoreOrder\Entity\Order\Product $product)
     {
         $this->product->removeElement($product);
     }
@@ -400,51 +436,5 @@ class Order implements EntityInterface
     public function getProduct()
     {
         return $this->product;
-    }
-
-    /**
-     * Set install
-     *
-     * @param boolean $install
-     * @return Order
-     */
-    public function setInstall($install)
-    {
-        $this->install = $install;
-
-        return $this;
-    }
-
-    /**
-     * Get install
-     *
-     * @return boolean 
-     */
-    public function getInstall()
-    {
-        return $this->install;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     * @return Order
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string 
-     */
-    public function getComment()
-    {
-        return $this->comment;
     }
 }

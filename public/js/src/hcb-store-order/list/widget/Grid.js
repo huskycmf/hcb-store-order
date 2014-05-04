@@ -1,8 +1,9 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "hcb-store-order/store/ProductStore",
+    "hcb-store-order/store/OrderStore",
     "dgrid/OnDemandGrid",
+    "put-selector/put",
     "dgrid/extensions/ColumnHider",
     "dgrid/extensions/ColumnResizer",
     "dgrid/extensions/DijitRegistry",
@@ -13,8 +14,8 @@ define([
     "dgrid/Keyboard",
     "dgrid/selector",
     "dojo/i18n!../../nls/List"
-], function(declare, lang, StaticPageStore,
-            OnDemandGrid, ColumnHider, ColumnResizer, DijitRegistry,
+], function(declare, lang, OrderStore,
+            OnDemandGrid, put, ColumnHider, ColumnResizer, DijitRegistry,
             _Selection, _Refresher, timestamp, editor, Keyboard,
             selector, translation) {
     
@@ -24,14 +25,30 @@ define([
         //  summary:
         //      Grid widget for displaying all available clients
         //      as list
-        store: StaticPageStore,
+        store: OrderStore,
 
         columns: [
             selector({ label: "", width: 40, selectorType: "checkbox" }),
-            {label: translation['labelId'], hidden: true, field: 'id', sortable: true, resizable: false},
-            editor({label: translation['labelUrl'], field: 'url', hidden: false,
-                    sortable: true, resizable: true, route: '/update/:id'}),
-            timestamp({label: translation['labelCreatedTimestamp'], field: 'createdTimestamp', sortable: true})
+            {label: translation['idLabel'], hidden: true, field: 'id', sortable: true, resizable: false},
+            {label: translation['statusLabel'], hidden: false, field: 'status',
+             sortable: false,
+             get: function (object) {
+                 switch(object.status) {
+                     case 1:
+                         return translation['newStatus'];
+                     case 2:
+                         return translation['progressStatus'];
+                     case 3:
+                         return translation['succeedStatus'];
+                 }
+            }, resizable: false},
+            {label: translation['productsLabel'], hidden: false,
+             field: 'products', sortable: false, resizable: false},
+//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
+//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
+//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
+//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
+            timestamp({label: translation['createdTimestampLabel'], field: 'timestamp', sortable: true})
         ],
 
         loadingMessage: translation['loadingMessage'],
