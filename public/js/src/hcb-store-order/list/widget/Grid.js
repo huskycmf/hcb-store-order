@@ -29,7 +29,7 @@ define([
 
         columns: [
             selector({ label: "", width: 40, selectorType: "checkbox" }),
-            {label: translation['idLabel'], hidden: true, field: 'id', sortable: true, resizable: false},
+            {label: translation['idLabel'], hidden: false, field: 'id', sortable: true, resizable: false},
             {label: translation['statusLabel'], hidden: false, field: 'status',
              sortable: false,
              get: function (object) {
