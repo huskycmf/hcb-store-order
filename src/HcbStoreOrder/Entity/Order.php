@@ -57,6 +57,13 @@ class Order implements EntityInterface
     protected $product;
 
     /**
+     * @var \HcbStoreOrder\Entity\Order\Product\Selection
+     *
+     * @ORM\OneToMany(targetEntity="HcbStoreOrder\Entity\Order\Product\Selection", mappedBy="order", cascade={"persist"})
+     */
+    protected $selection;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", length=300, type="string", nullable=false)
@@ -117,6 +124,7 @@ class Order implements EntityInterface
     public function __construct()
     {
         $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->selection = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -436,5 +444,38 @@ class Order implements EntityInterface
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Add selection
+     *
+     * @param \HcbStoreOrder\Entity\Order\Product\Selection $selection
+     * @return Order
+     */
+    public function addSelection(\HcbStoreOrder\Entity\Order\Product\Selection $selection)
+    {
+        $this->selection[] = $selection;
+
+        return $this;
+    }
+
+    /**
+     * Remove selection
+     *
+     * @param \HcbStoreOrder\Entity\Order\Product\Selection $selection
+     */
+    public function removeSelection(\HcbStoreOrder\Entity\Order\Product\Selection $selection)
+    {
+        $this->selection->removeElement($selection);
+    }
+
+    /**
+     * Get selection
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSelection()
+    {
+        return $this->selection;
     }
 }
