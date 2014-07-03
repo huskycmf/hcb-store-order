@@ -8,9 +8,10 @@ class Version20140613183358_HcbStoreProduct_HcbStoreOrder extends AbstractMigrat
 {
     public function up(Schema $schema)
     {
-        $this->addSql("CREATE TABLE IF NOT EXISTS `store_order_has_store_product_selection` (
+        $this->addSql("CREATE TABLE `store_order_has_product_selection` (
                           `store_order_id` INT UNSIGNED NOT NULL,
                           `store_product_selection_id` INT UNSIGNED NOT NULL,
+                          `count` INT UNSIGNED NOT NULL DEFAULT 1,
                           PRIMARY KEY (`store_order_id`, `store_product_selection_id`),
                           INDEX `fk_store_order_has_store_product_selection_store_product_se_idx`
                                 (`store_product_selection_id` ASC),
@@ -31,6 +32,6 @@ class Version20140613183358_HcbStoreProduct_HcbStoreOrder extends AbstractMigrat
 
     public function down(Schema $schema)
     {
-        $schema->dropTable('store_order_has_store_product_selection');
+        $schema->dropTable('store_order_has_product_selection');
     }
 }

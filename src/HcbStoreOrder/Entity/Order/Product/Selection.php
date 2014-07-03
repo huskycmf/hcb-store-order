@@ -57,7 +57,7 @@ class Selection implements EntityInterface
     /**
      * Get count
      *
-     * @return integer 
+     * @return integer
      */
     public function getCount()
     {
