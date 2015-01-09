@@ -7,7 +7,7 @@ use HcCore\Service\CommandInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Zf2Libs\Stdlib\Service\Response\Messages\Response;
 
-class DeleteService implements CommandInterface
+class HandleService implements CommandInterface
 {
     /**
      * @var EntityManagerInterface
@@ -27,7 +27,7 @@ class DeleteService implements CommandInterface
     /**
      * @param EntityManagerInterface $entityManager
      * @param Response $response
-     * @param ByIdsInterface $data
+     * @param ByIdsInterface $deleteData
      */
     public function __construct(EntityManagerInterface $entityManager,
                                 Response $response,
@@ -43,22 +43,13 @@ class DeleteService implements CommandInterface
      */
     public function execute()
     {
-        return $this->delete($this->data);
-    }
-
-    /**
-     * @param \HcCore\Data\Collection\Entities\ByIdsInterface $postsToDelete
-     * @return Response
-     */
-    protected  function delete(ByIdsInterface $ordersToDelete)
-    {
         try {
             $this->entityManager->beginTransaction();
-            $orderEntities = $ordersToDelete->getEntities();
+            $orderEntities = $this->data->getEntities();
 
             /* @var $orderEntities OrderEntity[] */
             foreach ($orderEntities as $orderEntity) {
-                $this->entityManager->remove($orderEntity);
+                $orderEntity->setStatus(2);
             }
 
             $this->entityManager->flush();

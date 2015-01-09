@@ -10,11 +10,11 @@ return array(
             'type' => 'segment',
             'options' => array(
                 'route' => '/:id',
-                'constraints' => array( 'id' => '[0-9]+' )
-            ),
-            'may_terminate' => false,
-            'child_routes' => array(
-
+                'constraints' => array( 'id' => '[0-9]+' ),
+                'defaults' => array(
+                    'controller' =>
+                        'HcbStoreOrder-Controller-View'
+                )
             )
         ),
         'delete' => array(
@@ -30,6 +30,42 @@ return array(
                         'verb' => 'post',
                         'defaults' => array(
                             'controller' => 'HcbStoreOrder-Controller-Collection-Delete'
+                        )
+                    )
+                )
+            )
+        ),
+        'handle' => array(
+            'type' => 'literal',
+            'options' => array(
+                'route' => '/handle'
+            ),
+            'may_terminate' => false,
+            'child_routes' => array(
+                'delete' => array(
+                    'type' => 'method',
+                    'options' => array(
+                        'verb' => 'post',
+                        'defaults' => array(
+                            'controller' => 'HcbStoreOrder-Controller-Collection-Handle'
+                        )
+                    )
+                )
+            )
+        ),
+        'complete' => array(
+            'type' => 'literal',
+            'options' => array(
+                'route' => '/complete'
+            ),
+            'may_terminate' => false,
+            'child_routes' => array(
+                'delete' => array(
+                    'type' => 'method',
+                    'options' => array(
+                        'verb' => 'post',
+                        'defaults' => array(
+                            'controller' => 'HcbStoreOrder-Controller-Collection-Complete'
                         )
                     )
                 )

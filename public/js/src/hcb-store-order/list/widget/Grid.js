@@ -13,7 +13,7 @@ define([
     "hc-backend/dgrid/columns/editor",
     "dgrid/Keyboard",
     "dgrid/Selector",
-    "dojo/i18n!../../nls/List"
+    "dojo/i18n!../../nls/Package"
 ], function(declare, lang, OrderStore,
             OnDemandGrid, put, ColumnHider, ColumnResizer, DijitRegistry,
             _Selection, _Refresher, timestamp, editor, Keyboard,
@@ -44,10 +44,10 @@ define([
             }, resizable: false},
             {label: translation['productsLabel'], hidden: false,
              field: 'products', sortable: false, resizable: false},
-//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
-//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
-//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
-//            {label: translation['idLabel'], hidden: false, field: 'id', sortable: false, resizable: false},
+            {label: translation['totalLabel'], hidden: false,
+             field: 'total', sortable: false, resizable: false},
+            {label: translation['deliveryLabel'], hidden: false,
+             field: 'delivery', sortable: false, resizable: false},
             timestamp({label: translation['createdTimestampLabel'], field: 'timestamp', sortable: true})
         ],
 

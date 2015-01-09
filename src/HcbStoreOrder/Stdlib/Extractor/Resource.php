@@ -34,6 +34,8 @@ class Resource implements ExtractorInterface
 
         return array('id'=>$order->getId(),
                      'status' => $order->getStatus(),
+                     'total' => $order->getTotal(),
+                     'delivery' => $order->getDelivery(),
                      'products' => join("\n", $products),
                      'timestamp'=>$updatedTimestamp);
     }
