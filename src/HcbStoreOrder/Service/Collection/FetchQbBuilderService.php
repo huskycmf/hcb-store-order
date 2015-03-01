@@ -39,7 +39,8 @@ class FetchQbBuilderService implements DataServiceInterface
         /* @var $qb QueryBuilder */
         $qb = $this->entityManager
                    ->getRepository('HcbStoreOrder\Entity\Order')
-                   ->createQueryBuilder('o');
+                   ->createQueryBuilder('o')
+                   ->orderBy('o.createdTimestamp', 'DESC');
 
         if (is_null($params)) return $qb;
 

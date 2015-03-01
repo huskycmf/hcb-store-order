@@ -37,6 +37,6 @@ class Resource implements ExtractorInterface
                      'total' => $order->getTotal(),
                      'delivery' => $order->getDelivery(),
                      'products' => join("\n", $products),
-                     'timestamp'=>$updatedTimestamp);
+                     'createdTimestamp'=>$updatedTimestamp);
     }
 }

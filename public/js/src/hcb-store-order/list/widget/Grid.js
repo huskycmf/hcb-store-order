@@ -46,7 +46,7 @@ define([
              field: 'total', sortable: false, resizable: false},
             {label: translation['deliveryLabel'], hidden: false,
              field: 'delivery', sortable: false, resizable: false},
-            timestamp({label: translation['createdTimestampLabel'], field: 'timestamp', sortable: true})
+            timestamp({label: translation['createdTimestampLabel'], field: 'createdTimestamp', sortable: true})
         ],
 
         renderRow: function (value, options) {

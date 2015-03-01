@@ -8,6 +8,7 @@ define([
 ], function (declare, JsonRest, Cache, Memory, Observable, config) {
     return Observable(Cache(JsonRest({
         target: config.get('primaryRoute')+"/store/order",
-        idProperty: 'id'
+        idProperty: 'id',
+        sortParam: 'sort'
     }), Memory()));
 });
