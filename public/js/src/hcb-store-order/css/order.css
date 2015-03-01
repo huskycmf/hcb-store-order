@@ -1,3 +1,27 @@
-a {
+.hc-backend .dgrid-row.newStatus {
+    background-color: rgba(153, 216, 178, 0.23);
+}
 
+.hc-backend .dgrid-row.newStatus:hover {
+    background-color: rgba(153, 216, 178, 0.35);
+}
+
+.hc-backend .dgrid-row.progressStatus {
+    background-color: rgba(226, 229, 61, 0.49);
+}
+
+.hc-backend .dgrid-row.progressStatus:hover {
+    background-color: rgba(226, 229, 61, 0.69);
+}
+
+.hc-backend .dgrid-row.succeedStatus {
+    background-color: rgba(132, 128, 128, 0.5);
+}
+
+.hc-backend .dgrid-row.succeedStatus .dgrid-cell {
+    color: #000000;
+}
+
+.hc-backend .dgrid-row.succeedStatus:hover {
+    background-color: rgba(132, 128, 128, 0.9);
 }
