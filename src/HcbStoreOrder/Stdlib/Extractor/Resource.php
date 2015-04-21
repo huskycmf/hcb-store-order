@@ -35,6 +35,8 @@ class Resource implements ExtractorInterface
         return array('id'=>$order->getId(),
                      'status' => $order->getStatus(),
                      'total' => $order->getTotal(),
+                     'comment' => $order->getComment(),
+                     'contacts' => $order->getPhone() . (strlen($order->getEmail()) ? ' '. $order->getEmail() : ''),
                      'delivery' => $order->getDelivery(),
                      'products' => join("\n", $products),
                      'createdTimestamp'=>$updatedTimestamp);

@@ -11,6 +11,8 @@ define(({
     completeSelectedButtonLabel: 'Заказ выполнен',
     deleteSelectedButtonLabel: 'Удалить выбранные',
     newStatus: 'Новый',
+    commentLabel: 'Комментарий',
+    contactsLabel: 'Контакты',
     progressStatus: 'Обробатывается',
     succeedStatus: 'Выполнен'
 }));

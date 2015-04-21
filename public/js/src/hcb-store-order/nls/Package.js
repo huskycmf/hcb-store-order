@@ -16,6 +16,7 @@ define({ root:
         deliveryLabel: 'Delivery',
         commentLabel: 'Comment',
         paymentLabel: 'Payment',
+        contactsLabel: 'Contacts',
         installLabel: 'Install',
         createdTimestampLabel: 'Created',
         handleSelectedButtonLabel: 'Handle selected',
